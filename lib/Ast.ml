@@ -13,4 +13,4 @@ let apple_property (h: int) (s: int) =
 
 Let(apple_property, [(h*int),(s*int)], Application(apple (Application Var h,Var s)), Application(apple (apple, s), h))
 
-...
+tyler
