@@ -1,0 +1,179 @@
+# dune build
+# OCAMLPARAM: unset
+# Workspace root: /home/upadh066/Desktop/2041/FinalProject
+$ /usr/bin/nproc > /tmp/dune82a5a5.output 2> /dev/null
+# Auto-detected concurrency: 16
+# disable binary cache
+$ /usr/bin/ocamlc.opt -config > /tmp/dunee3f976.output
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dyn
+#  ; merlin = true
+#  ; for_host = None
+#  ; fdo_target_exe = None
+#  ; build_dir = "default"
+#  ; toplevel_path = None
+#  ; ocaml_bin = External "/usr/bin"
+#  ; ocaml = Ok External "/usr/bin/ocaml"
+#  ; ocamlc = External "/usr/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/usr/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/usr/bin/ocamldep.opt"
+#  ; ocamlmklib = Ok External "/usr/bin/ocamlmklib.opt"
+#  ; env =
+#      map
+#        { "CAML_LD_LIBRARY_PATH" :
+#            "/home/upadh066/Desktop/2041/FinalProject/_build/install/default/lib/stublibs"
+#        ; "DUNE_OCAML_HARDCODED" : "/usr/lib/ocaml"
+#        ; "DUNE_OCAML_STDLIB" : "/usr/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" : "/home/upadh066/Desktop/2041/FinalProject"
+#        ; "INSIDE_DUNE" :
+#            "/home/upadh066/Desktop/2041/FinalProject/_build/default"
+#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
+#            "/home/upadh066/Desktop/2041/FinalProject/_build/install/default/lib"
+#        ; "OCAMLPATH" :
+#            "/home/upadh066/Desktop/2041/FinalProject/_build/install/default/lib"
+#        ; "OCAMLTOP_INCLUDE_PATH" :
+#            "/home/upadh066/Desktop/2041/FinalProject/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; findlib_path = [ External "/usr/lib/ocaml" ]
+#  ; arch_sixtyfour = true
+#  ; natdynlink_supported = true
+#  ; supports_shared_libraries = true
+#  ; ocaml_config =
+#      { version = "4.13.1"
+#      ; standard_library_default = "/usr/lib/ocaml"
+#      ; standard_library = "/usr/lib/ocaml"
+#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
+#      ; ccomp_type = "cc"
+#      ; c_compiler = "x86_64-linux-gnu-gcc"
+#      ; ocamlc_cflags =
+#          [ "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-fPIC"
+#          ; "-g"
+#          ; "-O2"
+#          ; "-ffile-prefix-map=/build/ocaml-SC7b9w/ocaml-4.13.1=."
+#          ; "-fstack-protector-strong"
+#          ; "-Wformat"
+#          ; "-Werror=format-security"
+#          ]
+#      ; ocamlc_cppflags =
+#          [ "-D_FILE_OFFSET_BITS=64"; "-Wdate-time"; "-D_FORTIFY_SOURCE=2" ]
+#      ; ocamlopt_cflags =
+#          [ "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-fPIC"
+#          ; "-g"
+#          ; "-O2"
+#          ; "-ffile-prefix-map=/build/ocaml-SC7b9w/ocaml-4.13.1=."
+#          ; "-fstack-protector-strong"
+#          ; "-Wformat"
+#          ; "-Werror=format-security"
+#          ]
+#      ; ocamlopt_cppflags =
+#          [ "-D_FILE_OFFSET_BITS=64"; "-Wdate-time"; "-D_FORTIFY_SOURCE=2" ]
+#      ; bytecomp_c_compiler =
+#          [ "x86_64-linux-gnu-gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-fPIC"
+#          ; "-g"
+#          ; "-O2"
+#          ; "-ffile-prefix-map=/build/ocaml-SC7b9w/ocaml-4.13.1=."
+#          ; "-fstack-protector-strong"
+#          ; "-Wformat"
+#          ; "-Werror=format-security"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-Wdate-time"
+#          ; "-D_FORTIFY_SOURCE=2"
+#          ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
+#      ; native_c_compiler =
+#          [ "x86_64-linux-gnu-gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-fPIC"
+#          ; "-g"
+#          ; "-O2"
+#          ; "-ffile-prefix-map=/build/ocaml-SC7b9w/ocaml-4.13.1=."
+#          ; "-fstack-protector-strong"
+#          ; "-Wformat"
+#          ; "-Werror=format-security"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-Wdate-time"
+#          ; "-D_FORTIFY_SOURCE=2"
+#          ]
+#      ; native_c_libraries = [ "-lm" ]
+#      ; cc_profile = []
+#      ; architecture = "amd64"
+#      ; model = "default"
+#      ; int_size = 63
+#      ; word_size = 64
+#      ; system = "linux"
+#      ; asm = [ "x86_64-linux-gnu-as" ]
+#      ; asm_cfi_supported = true
+#      ; with_frame_pointers = false
+#      ; ext_exe = ""
+#      ; ext_obj = ".o"
+#      ; ext_asm = ".s"
+#      ; ext_lib = ".a"
+#      ; ext_dll = ".so"
+#      ; os_type = "Unix"
+#      ; default_executable_name = "a.out"
+#      ; systhread_supported = true
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
+#      ; profiling = false
+#      ; flambda = false
+#      ; spacetime = false
+#      ; safe_string = true
+#      ; exec_magic_number = "Caml1999X030"
+#      ; cmi_magic_number = "Caml1999I030"
+#      ; cmo_magic_number = "Caml1999O030"
+#      ; cma_magic_number = "Caml1999A030"
+#      ; cmx_magic_number = "Caml1999Y030"
+#      ; cmxa_magic_number = "Caml1999Z030"
+#      ; ast_impl_magic_number = "Caml1999M030"
+#      ; ast_intf_magic_number = "Caml1999N030"
+#      ; cmxs_magic_number = "Caml1999D030"
+#      ; cmt_magic_number = "Caml1999T030"
+#      ; natdynlink_supported = true
+#      ; supports_shared_libraries = true
+#      ; windows_unicode = false
+#      }
+#  }
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/FinalProject.ml) > _build/default/lib/.FinalProject.objs/FinalProject.ml.d
+$ (cd _build/default && /usr/bin/ocamllex -q -o lib/lexer.ml lib/lexer.mll)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I lib/.FinalProject.objs/byte -no-alias-deps -opaque -o lib/.FinalProject.objs/byte/finalProject__.cmo -c -impl lib/finalProject__.ml-gen)
+$ (cd _build/default && /usr/bin/menhir lib/parser.mly --base lib/parser --infer-write-query lib/parser__mock.ml.mock)
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/lexer.ml) > _build/default/lib/.FinalProject.objs/lexer.ml.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/parser__mock.ml.mock) > _build/default/lib/.FinalProject.objs/parser__mock.ml.mock.d
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I lib/.FinalProject.objs/byte -I lib/.FinalProject.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o lib/.FinalProject.objs/native/finalProject__.cmx -c -impl lib/finalProject__.ml-gen)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.FinalProject.objs/byte -open FinalProject__ -short-paths -i -impl lib/parser__mock.ml.mock) > _build/default/lib/parser__mock.mli.inferred
+$ (cd _build/default && /usr/bin/menhir lib/parser.mly --base lib/parser --infer-read-reply lib/parser__mock.mli.inferred)
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -intf lib/parser.mli) > _build/default/lib/.FinalProject.objs/parser.mli.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/parser.ml) > _build/default/lib/.FinalProject.objs/parser.ml.d
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.FinalProject.objs/byte -no-alias-deps -opaque -open FinalProject__ -o lib/.FinalProject.objs/byte/finalProject__Parser.cmi -c -intf lib/parser.mli)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.FinalProject.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open FinalProject__ -o lib/.FinalProject.objs/byte/finalProject__Parser.cmo -c -impl lib/parser.ml)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.FinalProject.objs/byte -I lib/.FinalProject.objs/native -intf-suffix .ml -no-alias-deps -opaque -open FinalProject__ -o lib/.FinalProject.objs/native/finalProject__Parser.cmx -c -impl lib/parser.ml)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.FinalProject.objs/byte -no-alias-deps -opaque -open FinalProject__ -o lib/.FinalProject.objs/byte/finalProject__Lexer.cmo -c -impl lib/lexer.ml)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.FinalProject.objs/byte -I lib/.FinalProject.objs/native -intf-suffix .ml -no-alias-deps -opaque -open FinalProject__ -o lib/.FinalProject.objs/native/finalProject__Lexer.cmx -c -impl lib/lexer.ml)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.FinalProject.objs/byte -no-alias-deps -opaque -open FinalProject__ -o lib/.FinalProject.objs/byte/finalProject.cmo -c -impl lib/FinalProject.ml)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/FinalProject.cma lib/.FinalProject.objs/byte/finalProject__.cmo lib/.FinalProject.objs/byte/finalProject__Parser.cmo lib/.FinalProject.objs/byte/finalProject__Lexer.cmo lib/.FinalProject.objs/byte/finalProject.cmo)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.FinalProject.objs/byte -I lib/.FinalProject.objs/native -intf-suffix .ml -no-alias-deps -opaque -open FinalProject__ -o lib/.FinalProject.objs/native/finalProject.cmx -c -impl lib/FinalProject.ml)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/FinalProject.cmxa lib/.FinalProject.objs/native/finalProject__.cmx lib/.FinalProject.objs/native/finalProject__Parser.cmx lib/.FinalProject.objs/native/finalProject__Lexer.cmx lib/.FinalProject.objs/native/finalProject.cmx)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I bin/.main.eobjs/byte -I lib/.FinalProject.objs/byte -no-alias-deps -opaque -o bin/.main.eobjs/byte/dune__exe__Main.cmo -c -impl bin/main.ml)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.FinalProject.objs/byte -I lib/.FinalProject.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -shared -linkall -I lib -o lib/FinalProject.cmxs lib/FinalProject.cmxa)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/FinalProject.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)

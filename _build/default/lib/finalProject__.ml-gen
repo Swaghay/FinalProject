@@ -1,0 +1,6 @@
+(** @canonical FinalProject.Lexer *)
+module Lexer = FinalProject__Lexer
+
+
+(** @canonical FinalProject.Parser *)
+module Parser = FinalProject__Parser
