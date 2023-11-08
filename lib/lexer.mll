@@ -7,10 +7,7 @@ let newline = '\r' | '\n' | "\r\n"
 
  rule token = parse
 | [' ' '\t'] { token lexbuf }
-| "(*prove*)" { PROVE }
-| "(*hint:" { HINT }
-| "(*" { comment 0 lexbuf }
-| "*)" { commentclose 0 lexbuf}
-| ['a'-'z' 'A'-'Z' '0'-'9' '?' '_' '\'']+ as id { IDENT id }
-| eof { EOF }
+| ['a'-'z' 'A'-'Z' '0'-'9']+ as id { IDENT id }
+| "(" { LPAREN }
+| ")" { RPAREN }
 | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }
