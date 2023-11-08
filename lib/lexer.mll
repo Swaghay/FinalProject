@@ -16,6 +16,7 @@ let newline = '\r' | '\n' | "\r\n"
 | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }
 and comment level = parse
 | "*)" { if level = 0 then token lexbuf
-else comment (level - 1) lexbuf }
+                        else comment (level - 1) lexbuf }
 | "(*" { comment (level + 1) lexbuf }
+| eof { raise (SyntaxError "Unclosed comment") }
 | _ { comment level lexbuf }
