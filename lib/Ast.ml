@@ -1,15 +1,22 @@
 type expression =   
-  | expression of string 
-  | Application of (expression * string) 
+  | Func of string 
+  | Application of (expression * expression) 
+
 
 type decl = 
-  | Let of (Identifier * TypedName list * expression * expression) 
+  | Let of (Identifier * typedName list * expression * expression) 
 
-type TypedName =
-  | 
+type typedName =
+  | Var of string
+  | Type of string
+  | Arguments of (Var * Type)
 
+
+(*
 let apple_property (h: int) (s: int) =
-  apple apple h s = apple apple s h
+  apple (apple h s) s = apple (apple s h) s
 
-Let(apple_property, [(h*int),(s*int)], Application(apple (Application Var h,Var s)), Application(apple (apple, s), h))
 
+(apple ((apple h) s)) s
+Application (Application (Func "apple", Application (Application (Func "apple", Func "h"), Func "s")), Func "s")
+*)
