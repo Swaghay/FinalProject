@@ -10,7 +10,7 @@ let newline = '\r' | '\n' | "\r\n"
 | newline { Lexing.new_line lexbuf;token lexbuf }
 | "//" [^ '\n' '\r']* { token lexbuf }
 | [' ' '\t'] { token lexbuf }
-| ['a'-'z' 'A'-'Z' '0'-'9']+ as id { IDENT id }
+| ['a'-'z' 'A'-'Z' '0'-'9' '_' '\\']+ as id { IDENT id }
 | "(" { LPAREN }
 | ")" { RPAREN }
 | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }

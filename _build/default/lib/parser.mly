@@ -1,3 +1,4 @@
+
 %token <string> WORD
 %token EOF
 %start main

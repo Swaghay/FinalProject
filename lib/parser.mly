@@ -1,3 +1,7 @@
+%{       
+    open Ast
+%}
+
 %token <string> WORD
 %token EOF
 %start main
@@ -8,4 +12,3 @@ main:
 line:
 | { [] }
 | WORD line { $1 :: $2 }
-
