@@ -4,6 +4,9 @@
 
 %token <string> WORD
 %token EOF
+%token LPAREN
+%token RPAREN
+%token EQUALS
 %start main
 %type <string list> main
 %%
