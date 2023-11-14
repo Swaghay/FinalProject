@@ -14,7 +14,7 @@ type decl =
 
 (*
 (apple ((apple h) s)) s
-Application (Application (Func "apple", Application (Application (Func "apple", Func "h"), Func "s")), Func "s")
+Application (Application (Func "apple", Application (Application (Func "apple", Var "h"), Var "s")), Var "s")
 
 (h: int) (s: int)
 [Arguments ("h", "int"), Arguments ("s", "int")]

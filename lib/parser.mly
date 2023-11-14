@@ -28,4 +28,5 @@ LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN {Arguments (var, vartype)
 
 expression:
 | LPAREN ; 
+|
 | var = IDENT {Func var}
