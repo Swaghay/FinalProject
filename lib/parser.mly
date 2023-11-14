@@ -7,11 +7,17 @@
 %token LPAREN
 %token RPAREN
 %token EQUALS
+%token LET
+%token <string> IDENT
 %start main
-%type <string list> main
+%type <decl list> main
+%type <decl> declaration
+%type <typedName> typedName
+%type <expression> expression
 %%
+
 main:
-| line EOF { $1 }
-line:
-| { [] }
-| WORD line { $1 :: $2 }
+decls = list(declaration) ; EOF { decls }
+
+declaration:
+LET ; string
