@@ -21,6 +21,11 @@ main:
 decls = list(declaration) ; EOF { decls }
 
 declaration:
-LET ; name = IDENT ;  
+LET ; name = IDENT ;  args = list(typedName) ; EQUALS ; left = expression ; EQUALS ; right = expression {Let (name, args, left right)}
 
 typedName:
+LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN {Arguments (var, vartype)}
+
+expression:
+| LPAREN ; 
+| var = IDENT {Func var}
