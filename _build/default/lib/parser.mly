@@ -1,12 +1,31 @@
+%{       
+    open Ast
+%}
 
-%token <string> WORD
 %token EOF
+%token LPAREN
+%token RPAREN
+%token EQUALS
+%token LET
+%token COLON
+%token <string> IDENT
 %start main
-%type <string list> main
+%type <decl list> main
+%type <decl> declaration
+%type <typedName> typedName
+%type <expression> expression
 %%
-main:
-| line EOF { $1 }
-line:
-| { [] }
-| WORD line { $1 :: $2 }
 
+main:
+decls = list(declaration) ; EOF { decls }
+
+declaration:
+LET ; name = IDENT ;  args = list(typedName) ; EQUALS ; left = expression ; EQUALS ; right = expression {Let (name, args, left, right)}
+
+typedName:
+LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN {Arguments (var, vartype)}
+
+expression:
+| LPAREN ; f = IDENT ; l = list(expression) ; RPAREN {Application  (f, l)}
+| f = IDENT ; l = list(expression) ; {Application (f, l)}
+| n = IDENT {Name n}

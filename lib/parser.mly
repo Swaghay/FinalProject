@@ -2,7 +2,6 @@
     open Ast
 %}
 
-%token <string> WORD
 %token EOF
 %token LPAREN
 %token RPAREN
@@ -21,7 +20,7 @@ main:
 decls = list(declaration) ; EOF { decls }
 
 declaration:
-LET ; name = IDENT ;  args = list(typedName) ; EQUALS ; left = expression ; EQUALS ; right = expression {Let (name, args, left right)}
+LET ; name = IDENT ;  args = list(typedName) ; EQUALS ; left = expression ; EQUALS ; right = expression {Let (name, args, left, right)}
 
 typedName:
 LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN {Arguments (var, vartype)}
@@ -29,4 +28,4 @@ LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN {Arguments (var, vartype)
 expression:
 | LPAREN ; f = IDENT ; l = list(expression) ; RPAREN {Application  (f, l)}
 | f = IDENT ; l = list(expression) ; {Application (f, l)}
-| n = IDENT {Name f}
+| n = IDENT {Name n}

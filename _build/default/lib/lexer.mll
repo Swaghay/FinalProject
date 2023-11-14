@@ -5,12 +5,15 @@
 
 let newline = '\r' | '\n' | "\r\n"
 
- rule token = parse
+rule token = parse
 | "(*" { comment 0 lexbuf }
 | newline { Lexing.new_line lexbuf;token lexbuf }
 | "//" [^ '\n' '\r']* { token lexbuf }
 | [' ' '\t'] { token lexbuf }
 | ['a'-'z' 'A'-'Z' '0'-'9' '_' '\\']+ as id { IDENT id }
+| "=" { EQUALS }
+| "Let" { LET }
+| ":" { COLON }
 | "(" { LPAREN }
 | ")" { RPAREN }
 | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }

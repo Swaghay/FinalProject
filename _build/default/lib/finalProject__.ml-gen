@@ -8,3 +8,6 @@ module Lexer = FinalProject__Lexer
 
 (** @canonical FinalProject.Parser *)
 module Parser = FinalProject__Parser
+
+(** @canonical FinalProject.To_String *)
+module To_String = FinalProject__To_String
