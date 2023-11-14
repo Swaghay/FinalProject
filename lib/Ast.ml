@@ -1,7 +1,6 @@
 type expression =   
-  | Func of string 
-  | Var of string
-  | Application of (expression * expression) 
+  | Name of string 
+  | Application of (string * expression list) 
 
 type typedName =
   | Arguments of (string * string)
@@ -13,9 +12,14 @@ type decl =
 
 
 (*
-(apple ((apple h) s)) s
-Application (Application (Func "apple", Application (Application (Func "apple", Var "h"), Var "s")), Var "s")
+apple (apple h) s s
+Application ("apple", [Application ("apple", [Name h]), Name s, Name s])
+
+((apple ((apple h) s)) s)
+Application (Application (Name "apple", Application (Application (Name "apple", Name "h"), Name "s")), Name "s")
 
 (h: int) (s: int)
 [Arguments ("h", "int"), Arguments ("s", "int")]
 *)
+
+
