@@ -12,6 +12,7 @@ type decl =
 
 
 (*
+
 let apple_property (h: int) (s: int) =
   apple (apple h s) s = apple (apple s h) s
 
@@ -20,6 +21,5 @@ Application (Application (Func "apple", Application (Application (Func "apple", 
 
 (h: int) (s: int)
 [Arguments ("h", "int"), Arguments ("s", "int")]
-
 
 *)
