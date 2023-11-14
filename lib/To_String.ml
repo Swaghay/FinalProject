@@ -7,6 +7,8 @@ let rec string_of_expression (p : expression) : string =
 ) ^ ")"
   |Name name -> name
 
+
+
   (* | Application (Application app, Name name)
   | Application (Name name, Application app) *)
 
