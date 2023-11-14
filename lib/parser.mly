@@ -8,6 +8,7 @@
 %token RPAREN
 %token EQUALS
 %token LET
+%token COLON
 %token <string> IDENT
 %start main
 %type <decl list> main
@@ -20,4 +21,6 @@ main:
 decls = list(declaration) ; EOF { decls }
 
 declaration:
-LET ; string
+LET ; name = IDENT ;  
+
+typedName:

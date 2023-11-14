@@ -13,6 +13,7 @@ rule token = parse
 | ['a'-'z' 'A'-'Z' '0'-'9' '_' '\\']+ as id { IDENT id }
 | "=" { EQUALS }
 | "Let" { LET }
+| ":" { COLON }
 | "(" { LPAREN }
 | ")" { RPAREN }
 | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }
