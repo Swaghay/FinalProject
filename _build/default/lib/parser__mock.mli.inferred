@@ -1,9 +1,9 @@
 type token = RPAREN | LPAREN | LET | IDENT of string | EQUALS | EOF | COLON
 val menhir_begin_marker : int
 val xv_typedName : Ast.typedName
+val xv_nonempty_list_expression_ : Ast.expression list
 val xv_main : Ast.decl list
 val xv_list_typedName_ : Ast.typedName list
-val xv_list_expression_ : Ast.expression list
 val xv_list_declaration_ : Ast.decl list
 val xv_expression : Ast.expression
 val xv_declaration : Ast.decl

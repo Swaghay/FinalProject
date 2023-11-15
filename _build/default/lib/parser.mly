@@ -26,6 +26,6 @@ typedName:
 LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN {Arguments (var, vartype)}
 
 expression:
-| LPAREN ; f = IDENT ; l = list(expression) ; RPAREN {Application  (f, l)}
-| f = IDENT ; l = list(expression) ; {Application (f, l)}
+| LPAREN ; e = expression ; RPAREN {e}
+| f = IDENT ; l = nonempty_list(expression) ; {Application (f, l)}
 | n = IDENT {Name n}
