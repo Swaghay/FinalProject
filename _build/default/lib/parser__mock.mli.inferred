@@ -1,4 +1,12 @@
-type token = RPAREN | LPAREN | LET | IDENT of string | EQUALS | EOF | COLON
+type token =
+    RPAREN
+  | PROVE
+  | LPAREN
+  | LET
+  | IDENT of string
+  | EQUALS
+  | EOF
+  | COLON
 val menhir_begin_marker : int
 val xv_typedName : Ast.typedName
 val xv_nonempty_list_expression_ : Ast.expression list

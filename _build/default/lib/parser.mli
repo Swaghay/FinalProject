@@ -3,6 +3,7 @@
 
 type token = 
   | RPAREN
+  | PROVE
   | LPAREN
   | LET
   | IDENT of (string)

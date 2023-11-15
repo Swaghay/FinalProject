@@ -12,6 +12,8 @@ let rec string_of_typedNameList (l: typedName list) : string =
   | [] -> ""
   | (Arguments (x, y))::t -> "( " ^ x ^ " : " ^ y ^ " ) " ^ (string_of_typedNameList t)
 
-let string_of_declaration (Let (name,args,exp1,exp2)) : string =
-"Let " ^ name ^ " " ^ (string_of_typedNameList args) ^ "\n= (" ^ (string_of_expression exp1) ^  " = " ^ (string_of_expression exp2) ^ ")\n"
+let string_of_declaration (l) : string =
+  match l with 
+  | Let (name,args,exp1,exp2) -> "let " ^ name ^ " " ^ (string_of_typedNameList args) ^ "\n= (" ^ (string_of_expression exp1) ^  " = " ^ (string_of_expression exp2) ^ ")\n"
+  | Prove (name,args,exp1,exp2) -> "let (*prove*) " ^ name ^ " " ^ (string_of_typedNameList args) ^ "\n= (" ^ (string_of_expression exp1) ^  " = " ^ (string_of_expression exp2) ^ ")\n"
 

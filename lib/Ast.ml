@@ -6,7 +6,8 @@ type typedName =
   | Arguments of (string * string)
   
 type decl = 
-  | Let of (string * typedName list * expression * expression) 
+  | Prove of (string * typedName list * expression * expression) 
+  | Let of (string * typedName list * expression * expression)
 
 
 
