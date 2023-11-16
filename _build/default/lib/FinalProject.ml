@@ -17,7 +17,7 @@ let rec string_of_expression (p : expression) : string =
 let rec string_of_typedNameList (l: typedName list) : string =
   match l with
   | [] -> ""
-  | (Arguments (x, y))::t -> "( " ^ x ^ " : " ^ y ^ " ) " ^ (string_of_typedNameList t)
+  | (Arguments (x, y))::t -> "(" ^ x ^ " : " ^ y ^ ") " ^ (string_of_typedNameList t)
 
 let string_of_declaration (l) : string =
   match l with 

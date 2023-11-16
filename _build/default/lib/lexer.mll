@@ -6,7 +6,6 @@
 let newline = '\r' | '\n' | "\r\n"
 
 rule token = parse
-| "(*hint:" { hint lexbuf}
 | "(*" { comment 0 lexbuf }
 | newline { Lexing.new_line lexbuf;token lexbuf }
 | "//" [^ '\n' '\r']* { token lexbuf }
@@ -31,7 +30,3 @@ and comment level = parse
 | "(*" { comment (level + 1) lexbuf }
 | eof { raise (SyntaxError "Unclosed comment") }
 | _ { comment level lexbuf }
-and hint = parse
-| "*)" { HINT }
-| newline { Lexing.new_line lexbuf; token lexbuf}
-| _ { hint lexbuf }
