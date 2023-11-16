@@ -29,5 +29,7 @@ LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN {Arguments (var, vartype)
 
 expression:
 | LPAREN ; e = expression ; RPAREN {e}
+| e = expression ; RPAREN {e}
+| LPAREN ; e = expression {e}
 | f = IDENT ; l = nonempty_list(expression) ; {Application (f, l)}
 | n = IDENT {Name n}
