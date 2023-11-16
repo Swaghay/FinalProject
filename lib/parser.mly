@@ -9,6 +9,7 @@
 %token LET
 %token COLON
 %token PROVE
+%token HINT
 %token <string> IDENT
 %start main
 %type <decl list> main
