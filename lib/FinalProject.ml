@@ -2,11 +2,6 @@ open Ast
 module Parser = Parser
 module Lexer = Lexer
 
-(* let parse (d : decl) : decl list =
-  let lexbuf = Lexing.from_string d in
-  let ast = Parser.main Lexer.token lexbuf in
-     ast *)
-
 let rec string_of_expression (p : expression) : string =
   match p with
   | Application (name, args)
