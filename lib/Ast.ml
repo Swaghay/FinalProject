@@ -4,10 +4,15 @@ type expression =
 
 type typedName =
   | Arguments of (string * string)
-  
+
+type usefulComment = 
+  | S of string 
+
 type decl = 
   | Prove of (string * typedName list * expression * expression) 
   | Let of (string * typedName list * expression * expression)
+  | Hint of usefulComment list
+
 
 
 

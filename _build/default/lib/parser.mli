@@ -2,11 +2,13 @@
 (* The type of tokens. *)
 
 type token = 
+  | STAR
   | RPAREN
   | PROVE
   | LPAREN
   | LET
   | IDENT of (string)
+  | HINT
   | EQUALS
   | EOF
   | COLON

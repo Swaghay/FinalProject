@@ -6,6 +6,8 @@
 let newline = '\r' | '\n' | "\r\n"
 
 rule token = parse
+| "(*hint:" { HINT }
+| "*" { STAR }
 | "(*" { comment 0 lexbuf }
 | newline { Lexing.new_line lexbuf;token lexbuf }
 | "//" [^ '\n' '\r']* { token lexbuf }
