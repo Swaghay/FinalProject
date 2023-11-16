@@ -8,7 +8,6 @@ type typedName =
 type decl = 
   | Prove of (string * typedName list * expression * expression) 
   | Let of (string * typedName list * expression * expression)
-  | Hint of string
 
 
 
