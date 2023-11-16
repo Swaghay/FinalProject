@@ -6,7 +6,7 @@ type typedName =
   | Arguments of (string * string)
 
 type usefulComment = 
-  | S of string 
+  | C of string 
 
 type decl = 
   | Prove of (string * typedName list * expression * expression) 

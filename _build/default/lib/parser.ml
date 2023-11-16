@@ -317,7 +317,7 @@ let _menhir_action_19 =
   fun s ->
     (
 # 41 "lib/parser.mly"
-          (S (s))
+          (C (s))
 # 322 "lib/parser.ml"
      : (Ast.usefulComment))
 

@@ -38,4 +38,4 @@ expression:
 | n = IDENT {Name n}
 
 usefulComment:
-s = IDENT {S (s)}
+s = IDENT {C (s)}

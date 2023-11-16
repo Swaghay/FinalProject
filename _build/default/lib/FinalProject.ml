@@ -17,7 +17,7 @@ let rec string_of_typedNameList (l: typedName list) : string =
 let rec string_of_usefulCommentList (u: usefulComment list) : string =
   match u with 
   | [] -> ""
-  | (S (str))::t -> str ^ " " ^ (string_of_usefulCommentList t)
+  | (C (str))::t -> str ^ " " ^ (string_of_usefulCommentList t)
 
 let string_of_declaration (l) : string =
   match l with 
