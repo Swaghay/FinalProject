@@ -19,7 +19,9 @@ rule token = parse
 | ['a'-'z' 'A'-'Z' '0'-'9' '_' '\\']+ as id { 
     match id with
     | "let" -> LET
+    | "(*prove*)" -> PROVE
     | _ -> IDENT id }
+| eof { EOF }
 | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }
 and comment level = parse
 | "*)" { if level = 0 then token lexbuf
