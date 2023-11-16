@@ -1,6 +1,8 @@
+(library
+ (name FinalProject))
+ 
 (menhir (modules parser))
 
 (ocamllex lexer)
 
-(library
- (name FinalProject))
+
