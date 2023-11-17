@@ -20,11 +20,9 @@ type decl =
 (*
 apple (apple h) s s
 (Application ("apple"; [Application ("apple"; [Name "h"]), Name "s", Name "s"]))
-
 (h: int) (s: int)
 [Arguments ("h", "int"), Arguments ("s", "int")]
 *)
-
 
 (*
 Bad:
