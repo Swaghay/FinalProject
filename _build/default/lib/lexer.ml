@@ -301,8 +301,17 @@ and __ocaml_lex_comment_rec level lexbuf __ocaml_lex_state =
 
   | 4 ->
 # 34 "lib/lexer.mll"
-    ( comment level lexbuf )
-# 306 "lib/lexer.ml"
+    ( 
+      let lexeme_str = Lexing.lexeme lexbuf in
+      if String.length lexeme_str > 0 then (
+        Printf.eprintf "Debug: Unexpected char: %s\n" lexeme_str;
+        raise (SyntaxError ("Unexpected char: " ^ lexeme_str))
+      ) else (
+        Printf.eprintf "Debug: Unexpected newline character\n";
+        raise (SyntaxError "Unexpected newline character")
+      )
+    )
+# 315 "lib/lexer.ml"
 
   | __ocaml_lex_state -> lexbuf.Lexing.refill_buff lexbuf;
       __ocaml_lex_comment_rec level lexbuf __ocaml_lex_state
