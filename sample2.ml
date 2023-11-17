@@ -11,15 +11,3 @@ let (*prove*) rev_append (l1 : list) (l2 : list)
 
   (* no hints! *)
 
-(* Output should read something like this:
-  Proof of cf_inv_property:
-   cf (inv (cf (inv h)))
-  = {lemma cf_inv_commute}
-   inv (cf (cf (inv h)))
-  = {lemma cf_idempotent}
-   inv (cf (inv h))
-  = {lemma cf_inv_commute}
-   inv (inv (cf h))
-  = {lemma inv_involution}
-   cf h
-*)
