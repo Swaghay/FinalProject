@@ -9,8 +9,7 @@ rule token = parse
 | "(*hint:" { HINT }
 | "(*" { comment 0 lexbuf }
 | "*" { STAR }
-| newline { Lexing.new_line lexbuf;token lexbuf }
-| "//" [^ '\n' '\r']* { token lexbuf }
+| newline { Lexing.new_line lexbuf; token lexbuf }
 | [' ' '\t'] { token lexbuf }
 | "let" { LET }
 | "(*prove*)" { PROVE }
@@ -31,13 +30,4 @@ and comment level = parse
 | newline { Lexing.new_line lexbuf; token lexbuf }
 | "(*" { comment (level + 1) lexbuf }
 | eof { raise (SyntaxError "Unclosed comment") }
-| _ { 
-      let lexeme_str = Lexing.lexeme lexbuf in
-      if String.length lexeme_str > 0 then (
-        Printf.eprintf "Debug: Unexpected char: %s\n" lexeme_str;
-        raise (SyntaxError ("Unexpected char: " ^ lexeme_str))
-      ) else (
-        Printf.eprintf "Debug: Unexpected newline character\n";
-        raise (SyntaxError "Unexpected newline character")
-      )
-    }
+| _ { comment level lexbuf }

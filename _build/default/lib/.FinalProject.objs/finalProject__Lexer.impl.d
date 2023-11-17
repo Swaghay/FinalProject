@@ -1,1 +1,1 @@
-lib/lexer.ml: Lexing Parser Printf String
+lib/lexer.ml: Lexing Parser

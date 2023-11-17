@@ -9,8 +9,7 @@ rule token = parse
 | "(*hint:" { HINT }
 | "(*" { comment 0 lexbuf }
 | "*" { STAR }
-| newline { Lexing.new_line lexbuf;token lexbuf }
-| "//" [^ '\n' '\r']* { token lexbuf }
+| newline { Lexing.new_line lexbuf; token lexbuf }
 | [' ' '\t'] { token lexbuf }
 | "let" { LET }
 | "(*prove*)" { PROVE }
