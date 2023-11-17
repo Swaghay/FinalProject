@@ -279,7 +279,7 @@ and __ocaml_lex_comment_rec level lexbuf __ocaml_lex_state =
 
   | 1 ->
 # 30 "lib/lexer.mll"
-          ( Lexing.new_line lexbuf; token lexbuf )
+          ( Lexing.new_line lexbuf; comment level lexbuf )
 # 284 "lib/lexer.ml"
 
   | 2 ->
