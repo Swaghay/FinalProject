@@ -4,14 +4,16 @@
 type token = 
   | STAR
   | RPAREN
+  | REC
   | PROVE
   | LPAREN
   | LET
+  | INDUCTION
   | IDENT of (string)
-  | HINT
   | EQUALS
   | EOF
   | COLON
+  | AXIOM
 
 (* This exception is raised by the monolithic API functions. *)
 

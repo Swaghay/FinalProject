@@ -6,14 +6,19 @@
 let newline = '\r' | '\n' | "\r\n"
 
 rule token = parse
-| "(*hint:" { HINT }
-| "(*" { comment 0 lexbuf }
+| "(*hint: axiom *)" { AXIOM }
+| "(*hint: induction" { INDUCTION }
 | "*" { STAR }
+| "(*" { comment 0 lexbuf }
 | newline { Lexing.new_line lexbuf; token lexbuf }
 | [' ' '\t'] { token lexbuf }
 | "let" { LET }
+| "rec" { REC }
+(* | "|" { PIPE }
+| "of" { OF } *)
 | "(*prove*)" { PROVE }
 | "=" { EQUALS }
+(* | "type" {TYPE} *)
 | ":" { COLON }
 | "(" { LPAREN }
 | ")" { RPAREN }

@@ -1,17 +1,34 @@
 type expression =   
   | Name of string 
   | Application of (string * expression list) 
+  (* | Tuple of a' list *)
 
 type typedName =
   | Arguments of (string * string)
 
-type usefulComment = 
-  | C of string 
+(* type variant =
+  | Type of string 
+  | TypeOf of string * expression list *)
+
+(*
+   type list = 
+   | Nil 
+   | Cons of (int*list)
+
+   Variant ("list", [Type "Nil"; TypeOf (Name "Cons", [Tuple of (Name "int", Name "list")])])
+
+   type e = 
+   | S of string 
+   | L of e list
+
+   Variant("e", [TypeOf ("S", [Name "string"]); TypeOf ("L", [Name "e", Name "list"])])
+*)
 
 type decl = 
-  | Prove of (string * typedName list * expression * expression) 
+  | ProveAxiom of (string * typedName list * expression * expression) 
+  | ProveInduction of (string * typedName list * expression * expression * string)
   | Let of (string * typedName list * expression * expression)
-  | Hint of usefulComment list
+(*   | Variant of string * variant list *)
 
 
 
@@ -20,11 +37,9 @@ type decl =
 (*
 apple (apple h) s s
 (Application ("apple"; [Application ("apple"; [Name "h"]), Name "s", Name "s"]))
-
 (h: int) (s: int)
 [Arguments ("h", "int"), Arguments ("s", "int")]
 *)
-
 
 (*
 Bad:

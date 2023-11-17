@@ -1,20 +1,20 @@
 type token =
     STAR
   | RPAREN
+  | REC
   | PROVE
   | LPAREN
   | LET
+  | INDUCTION
   | IDENT of string
-  | HINT
   | EQUALS
   | EOF
   | COLON
+  | AXIOM
 val menhir_begin_marker : int
-val xv_usefulComment : Ast.usefulComment
 val xv_typedName : Ast.typedName
 val xv_nonempty_list_expression_ : Ast.expression list
 val xv_main : Ast.decl list
-val xv_list_usefulComment_ : Ast.usefulComment list
 val xv_list_typedName_ : Ast.typedName list
 val xv_list_declaration_ : Ast.decl list
 val xv_expression : Ast.expression
