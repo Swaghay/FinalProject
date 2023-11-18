@@ -3,6 +3,9 @@ type expression =
   | Application of (string * expression list) 
   (* | Tuple of a' list *)
 
+type body =
+  | Equality of (expression * expression)
+
 type typedName =
   | Arguments of (string * string)
 
@@ -25,9 +28,9 @@ type typedName =
 *)
 
 type decl = 
-  | ProveAxiom of (string * typedName list * expression * expression) 
-  | ProveInduction of (string * typedName list * expression * expression * string)
-  | Let of (string * typedName list * expression * expression)
+  | ProveAxiom of (string * typedName list * body) 
+  | ProveInduction of (string * typedName list * body * string)
+  | Let of (string * typedName list * body)
 (*   | Variant of string * variant list *)
 
 

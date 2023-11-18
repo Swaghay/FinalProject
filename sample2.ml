@@ -1,4 +1,3 @@
-
 (* Here are some other proofs to try your system on: *)
 let (*prove*) append_assoc (l1 : list) (l2 : list) (l3 : list)
     = (append (append l1 l2) l3 = append l1 (append l2 l3))
@@ -10,4 +9,3 @@ let (*prove*) rev_append (l1 : list) (l2 : list)
   (*hint: induction l1 *)
 
   (* no hints! *)
-

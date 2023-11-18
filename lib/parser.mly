@@ -28,10 +28,13 @@ main:
 decls = list(declaration) ; EOF { decls }
 
 declaration:
-| LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; left = expression ; EQUALS ; right = expression ; AXIOM {ProveAxiom (name, args, left, right)}
-| LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; left = expression ; EQUALS ; right = expression ; INDUCTION ; i = IDENT ; STAR ; RPAREN {ProveInduction (name, args, left, right, i)}
-| LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; left = expression ; EQUALS ; right = expression {Let (name, args, left, right)}
+| LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; AXIOM {ProveAxiom (name, args, b)}
+| LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; INDUCTION ; i = IDENT ; STAR ; RPAREN {ProveInduction (name, args, b, i)}
+| LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body {Let (name, args, b)}
 // | TYPE ; name = IDENT ; EQUALS ; l = list(variant) {Variant (name, l)}
+
+body:
+LPAREN ; l = expression ; EQUALS ; r = expression ; RPAREN {Equality (l,r)}
 
 typedName:
 LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN {Arguments (var, vartype)}
@@ -42,7 +45,5 @@ LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN {Arguments (var, vartype)
 
 expression:
 | LPAREN ; e = expression ; RPAREN {e}
-| e = expression ; RPAREN {e}
-| LPAREN ; e = expression {e}
 | f = IDENT ; l = nonempty_list(expression) ; {Application (f, l)}
 | n = IDENT {Name n}

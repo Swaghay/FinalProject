@@ -44,6 +44,10 @@ let rec string_of_expression (p : expression) : string =
   | Name name -> name
   (* | Tuple l -> string_of_tuple_commas l *)
 
+let string_of_equality (b: body) : string =
+  match b with 
+  | Equality (l,r) -> "(" ^ string_of_expression l ^ " = " ^ string_of_expression r ^ ")"
+
 let rec string_of_typedNameList (l: typedName list) : string =
   match l with
   | [] -> ""
@@ -52,8 +56,8 @@ let rec string_of_typedNameList (l: typedName list) : string =
 
 let string_of_declaration (l) : string =
   match l with 
-  | Let (name,args,exp1,exp2) -> "let " ^ name ^ " " ^ (string_of_typedNameList args) ^ "\n= (" ^ (string_of_expression exp1) ^  " = " ^ (string_of_expression exp2) ^ ")"
-  | ProveAxiom (name,args,exp1,exp2) -> "let (*prove*) " ^ name ^ " " ^ (string_of_typedNameList args) ^ "\n= (" ^ (string_of_expression exp1) ^  " = " ^ (string_of_expression exp2) ^ ")\n(*hint: axiom *)"
-  | ProveInduction (name, args, exp1, exp2, i) -> "let (*prove*) " ^ name ^ " " ^ (string_of_typedNameList args) ^ "\n= (" ^ (string_of_expression exp1) ^  " = " ^ (string_of_expression exp2) ^ ")\n(*hint: induction " ^ i ^ " *)"
+  | Let (name,args,b) -> "let " ^ name ^ " " ^ (string_of_typedNameList args) ^ "\n= " ^ (string_of_equality b)
+  | ProveAxiom (name,args,b) -> "let (*prove*) " ^ name ^ " " ^ (string_of_typedNameList args) ^ "\n= " ^ (string_of_equality b) ^ "\n(*hint: axiom *)"
+  | ProveInduction (name, args, b, i) -> "let (*prove*) " ^ name ^ " " ^ (string_of_typedNameList args) ^ "\n= " ^ (string_of_equality b) ^ "\n(*hint: induction " ^ i ^ " *)"
   (* | Variant (s, lst) -> s ^ string_of_variantList lst *)
 

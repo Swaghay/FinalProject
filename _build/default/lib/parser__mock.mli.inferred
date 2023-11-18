@@ -19,4 +19,5 @@ val xv_list_typedName_ : Ast.typedName list
 val xv_list_declaration_ : Ast.decl list
 val xv_expression : Ast.expression
 val xv_declaration : Ast.decl
+val xv_body : Ast.body
 val menhir_end_marker : int
