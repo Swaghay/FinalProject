@@ -8,17 +8,19 @@ let newline = '\r' | '\n' | "\r\n"
 rule token = parse
 | "(*hint: axiom *)" { AXIOM }
 | "(*hint: induction" { INDUCTION }
+| "(*prove*)" { PROVE }
 | "*" { STAR }
 | "(*" { comment 0 lexbuf }
 | newline { Lexing.new_line lexbuf; token lexbuf }
 | [' ' '\t'] { token lexbuf }
 | "let" { LET }
 | "rec" { REC }
-(* | "|" { PIPE }
-| "of" { OF } *)
-| "(*prove*)" { PROVE }
+| "|" { PIPE }
+| "of" { OF }
+(* | "of" { OF } *)
+
 | "=" { EQUALS }
-(* | "type" {TYPE} *)
+| "type" {TYPE}
 | ":" { COLON }
 | "(" { LPAREN }
 | ")" { RPAREN }

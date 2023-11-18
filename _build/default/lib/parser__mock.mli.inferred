@@ -1,8 +1,11 @@
 type token =
-    STAR
+    TYPE
+  | STAR
   | RPAREN
   | REC
   | PROVE
+  | PIPE
+  | OF
   | LPAREN
   | LET
   | INDUCTION
@@ -10,11 +13,16 @@ type token =
   | EQUALS
   | EOF
   | COLON
+  | CLOSEHINT
   | AXIOM
 val menhir_begin_marker : int
+val xv_variant : Ast.variant
+val xv_varTup : Ast.varTup
 val xv_typedName : Ast.typedName
+val xv_nonempty_list_varTup_ : Ast.varTup list
 val xv_nonempty_list_expression_ : Ast.expression list
 val xv_main : Ast.decl list
+val xv_list_variant_ : Ast.variant list
 val xv_list_typedName_ : Ast.typedName list
 val xv_list_declaration_ : Ast.decl list
 val xv_expression : Ast.expression

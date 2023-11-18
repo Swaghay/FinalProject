@@ -2,10 +2,13 @@
 (* The type of tokens. *)
 
 type token = 
+  | TYPE
   | STAR
   | RPAREN
   | REC
   | PROVE
+  | PIPE
+  | OF
   | LPAREN
   | LET
   | INDUCTION
@@ -13,6 +16,7 @@ type token =
   | EQUALS
   | EOF
   | COLON
+  | CLOSEHINT
   | AXIOM
 
 (* This exception is raised by the monolithic API functions. *)

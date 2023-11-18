@@ -1,7 +1,6 @@
 type expression =   
   | Name of string 
   | Application of (string * expression list) 
-  (* | Tuple of a' list *)
 
 type body =
   | Equality of (expression * expression)
@@ -9,9 +8,12 @@ type body =
 type typedName =
   | Arguments of (string * string)
 
-(* type variant =
+type varTup =
+  | TupSingle of string
+
+type variant =
   | Type of string 
-  | TypeOf of string * expression list *)
+  | TypeOf of string * varTup list
 
 (*
    type list = 
@@ -31,10 +33,7 @@ type decl =
   | ProveAxiom of (string * typedName list * body) 
   | ProveInduction of (string * typedName list * body * string)
   | Let of (string * typedName list * body)
-(*   | Variant of string * variant list *)
-
-
-
+  | Variant of string * variant list
 
 
 (*

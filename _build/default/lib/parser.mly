@@ -8,11 +8,12 @@
 %token EQUALS
 %token LET
 %token REC
-// %token TYPE
+%token CLOSEHINT
+%token TYPE
 %token COLON
 %token PROVE
-/* %token PIPE
-%token OF */
+%token PIPE
+%token OF 
 %token STAR
 %token AXIOM 
 %token INDUCTION
@@ -31,7 +32,7 @@ declaration:
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; AXIOM {ProveAxiom (name, args, b)}
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; INDUCTION ; i = IDENT ; STAR ; RPAREN {ProveInduction (name, args, b, i)}
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body {Let (name, args, b)}
-// | TYPE ; name = IDENT ; EQUALS ; l = list(variant) {Variant (name, l)}
+| TYPE ; name = IDENT ; EQUALS ; l = list(variant) {Variant (name, l)}
 
 body:
 LPAREN ; l = expression ; EQUALS ; r = expression ; RPAREN {Equality (l,r)}
@@ -39,9 +40,15 @@ LPAREN ; l = expression ; EQUALS ; r = expression ; RPAREN {Equality (l,r)}
 typedName:
 LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN {Arguments (var, vartype)}
 
-/* variant:
+varTup:
+| LPAREN ; s = varTup {s}
+| STAR ; s = varTup {s}
+| STAR ; s = varTup ; RPAREN {s}
+| s = IDENT {TupSingle s}
+
+variant:
 | PIPE ; s = IDENT {Type (s)}
-| PIPE ; s = IDENT ; l = nonempty_list(expression) ; {TypeOf (s, l)} */
+| PIPE ; s = IDENT ; OF ; l = nonempty_list(varTup) ; {TypeOf (s, l)}
 
 expression:
 | LPAREN ; e = expression ; RPAREN {e}
