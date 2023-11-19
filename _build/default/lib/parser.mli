@@ -2,22 +2,25 @@
 (* The type of tokens. *)
 
 type token = 
+  | WITH
   | TYPE
   | STAR
   | RPAREN
-  | REC
+  | RECUR
   | PROVE
   | PIPE
   | OF
+  | MATCH
   | LPAREN
   | LET
   | INDUCTION
   | IDENT of (string)
   | EQUALS
   | EOF
+  | COMMA
   | COLON
-  | CLOSEHINT
   | AXIOM
+  | ARROW
 
 (* This exception is raised by the monolithic API functions. *)
 

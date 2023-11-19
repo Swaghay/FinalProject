@@ -17,13 +17,14 @@ rule token = parse
 | "=" { EQUALS }
 | "type" {TYPE}
 | ":" { COLON }
+| "," { COMMA }
 | "(" { LPAREN }
 | ")" { RPAREN }
 | "->" { ARROW }
 | ['a'-'z' 'A'-'Z' '0'-'9' '_' '\\']+ as id { 
     match id with
     | "let" -> LET
-    | "rec" -> RECURSION (*rec is a build-in function in Ocaml*)
+    | "rec" -> RECUR (*rec is a build-in function in Ocaml*)
     | "of" -> OF
     | "match" -> MATCH
     | "with" -> WITH

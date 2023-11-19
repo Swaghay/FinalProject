@@ -3,7 +3,7 @@
 # Shared cache: disabled
 # Workspace root: /home/abhay/csci2041/FinalProject
 # Auto-detected concurrency: 12
-$ /usr/bin/ocamlc.opt -config > /tmp/dune_6e842b_output
+$ /usr/bin/ocamlc.opt -config > /tmp/dune_c5dbf3_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -138,11 +138,3 @@ $ /usr/bin/ocamlc.opt -config > /tmp/dune_6e842b_output
 #      }
 #  ; instrument_with = []
 #  }
-$ (cd _build/default && /home/abhay/.opam/default/bin/menhir lib/parser.mly --base lib/parser --infer-write-query lib/parser__mock.ml.mock)
-> File "lib/parser.mly", line 38, characters 44-48:
-> Error: two productions that share a semantic action must define exactly
-> the same identifiers. Here, "args" is defined
-> in one production, but not in all of them.
-[1]
-$ (cd _build/default && /usr/bin/ocamllex -q -o lib/lexer.ml lib/lexer.mll)
-$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/lexer.ml) > _build/default/lib/.FinalProject.objs/finalProject__Lexer.impl.d

@@ -15,10 +15,6 @@ type expression =
 type body =
   | Equality of (expression * expression)
 
-
-
-
-
 type varTup =
   | TupSingle of string
 
@@ -31,6 +27,7 @@ type decl =
   | ProveInduction of (string * typedName list * body * string)
   | Let of (string * typedName list * body)
   | Variant of string * variant list
+  | LetMatch of (string * typedName list * string * string * expression list)
 
 
 (*

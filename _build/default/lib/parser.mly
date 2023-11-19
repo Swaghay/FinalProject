@@ -7,11 +7,11 @@
 %token RPAREN
 %token EQUALS
 %token LET
-%token RECURSION
-%token CLOSEHINT
+%token RECUR
 %token TYPE
 %token COLON
 %token PROVE
+%token COMMA
 %token PIPE
 %token OF
 %token MATCH
@@ -35,21 +35,25 @@ declaration:
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; AXIOM {ProveAxiom (name, args, b)}
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; INDUCTION ; i = IDENT ; STAR ; RPAREN {ProveInduction (name, args, b, i)}
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body {Let (name, args, b)}
-| LET ; RECURSION ; PROVE ; name = IDENT ;  args = list(typedName) ; COLON ; return = IDENT ; EQUALS ; MATCH ; match_name = IDENT ; WITH (*TODO: add pattern*)
-(*TODO: Ocaml doesnt like the RECURSION token for some reason*)
+| LET ; RECUR ; name = IDENT ;  args = list(typedName) ; COLON ; return = IDENT ; EQUALS ; MATCH ; match_name = IDENT ; WITH ; patterns = nonempty_list(expression) {LetMatch (name, args, return, match_name, patterns)}
 | TYPE ; name = IDENT ; EQUALS ; l = list(variant) {Variant (name, l)}
 
 body:
 LPAREN ; l = expression ; EQUALS ; r = expression ; RPAREN {Equality (l,r)}
 
 typedName:
-LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN {Arguments (var, vartype)}
+| LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN ; COMMA {Arguments (var, vartype)}
+| LPAREN ; var = IDENT ; COLON ; vartype = IDENT; RPAREN {Arguments (var, vartype)}
 
 varTup:
 | LPAREN ; s = varTup {s}
 | STAR ; s = varTup {s}
 | STAR ; s = varTup ; RPAREN {s}
 | s = IDENT {TupSingle s}
+
+pattern:
+| PIPE ; s = IDENT ; LPAREN ; lst = nonempty_list(typedName) ; RPAREN {PatternMatch(s, lst)}
+| PIPE ; s = IDENT {PatternMatch(s, [])}
 
 variant:
 | PIPE ; s = IDENT {Type (s)}
