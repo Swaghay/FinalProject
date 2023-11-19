@@ -1,17 +1,15 @@
 type typedName =
   | Arguments of (string * string)
 
-type pattern = 
-  | PatternMatch of (string * typedName list)
-  
 type expression =   
   | Name of string 
   | Application of (string * expression list)
-  | MatchStatement of (pattern * expression) (*match is predefined*) 
+  | Tuple of (expression list)
 
-(*TODO: MatchStatement should probably be moved out of expression, Ocaml doesnt like it right now
-   because the order is messed up*)
-
+type pattern = 
+  | PatternNoArgs of (string * expression)
+  | PatternMatch of (string * typedName list * expression)
+  
 type body =
   | Equality of (expression * expression)
 
@@ -27,7 +25,7 @@ type decl =
   | ProveInduction of (string * typedName list * body * string)
   | Let of (string * typedName list * body)
   | Variant of string * variant list
-  | LetMatch of (string * typedName list * string * string * expression list)
+  | LetMatch of (string * typedName list * string * string * pattern list)
 
 
 (*

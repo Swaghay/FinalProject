@@ -35,7 +35,7 @@ declaration:
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; AXIOM {ProveAxiom (name, args, b)}
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; INDUCTION ; i = IDENT ; STAR ; RPAREN {ProveInduction (name, args, b, i)}
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body {Let (name, args, b)}
-| LET ; RECUR ; name = IDENT ;  args = list(typedName) ; COLON ; return = IDENT ; EQUALS ; MATCH ; match_name = IDENT ; WITH ; patterns = nonempty_list(expression) {LetMatch (name, args, return, match_name, patterns)}
+| LET ; RECUR ; name = IDENT ;  args = list(typedName) ; COLON ; return = IDENT ; EQUALS ; MATCH ; match_name = IDENT ; WITH ; patterns = nonempty_list(pattern) {LetMatch (name, args, return, match_name, patterns)}
 | TYPE ; name = IDENT ; EQUALS ; l = list(variant) {Variant (name, l)}
 
 body:
@@ -52,8 +52,8 @@ varTup:
 | s = IDENT {TupSingle s}
 
 pattern:
-| PIPE ; s = IDENT ; LPAREN ; lst = nonempty_list(typedName) ; RPAREN {PatternMatch(s, lst)}
-| PIPE ; s = IDENT {PatternMatch(s, [])}
+| PIPE ; s = IDENT ; LPAREN ; lst = nonempty_list(typedName) ; RPAREN ; ARROW ; e = expression {PatternMatch(s, lst, e)}
+| PIPE ; s = IDENT ; ARROW ; e = expression {PatternNoArgs(s, e)}
 
 variant:
 | PIPE ; s = IDENT {Type (s)}
@@ -61,12 +61,13 @@ variant:
 
 expression:
 | LPAREN ; e = expression ; RPAREN {e}
-| LPAREN ; e = expression {e}
-| COMMA ; e = expression {e}
-| COMMA ; e = expression ; RPAREN {e}
 | f = IDENT ; l = nonempty_list(expression) ; {Application (f, l)}
 | n = IDENT {Name n}
-| l = pattern ; ARROW ; r = expression ; {MatchStatement (l,r)}
+| LPAREN ; e = expression_list ; RPAREN {Tuple (e)}
+
+expression_list:
+| e = expression {[e]}
+| e = expression ; COMMA ; lst = expression_list {e :: lst}
 
 
 (* MatchStatement ((PatternMatch ("Cons", (Arguments ("h", "int"), Arguments ("t", "list")))),(Application ("Cons",  [h, Application ("append", [t,l2])]))) *)

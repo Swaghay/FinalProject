@@ -25,11 +25,13 @@ val xv_typedName : Ast.typedName
 val xv_pattern : Ast.pattern
 val xv_nonempty_list_varTup_ : Ast.varTup list
 val xv_nonempty_list_typedName_ : Ast.typedName list
+val xv_nonempty_list_pattern_ : Ast.pattern list
 val xv_nonempty_list_expression_ : Ast.expression list
 val xv_main : Ast.decl list
 val xv_list_variant_ : Ast.variant list
 val xv_list_typedName_ : Ast.typedName list
 val xv_list_declaration_ : Ast.decl list
+val xv_expression_list : Ast.expression list
 val xv_expression : Ast.expression
 val xv_declaration : Ast.decl
 val xv_body : Ast.body
