@@ -1,2 +1,4 @@
-let (*prove*) append_cons (h : int) (t : list) (l : list)
-= (append (Cons (h, t)) l = Cons (h, append t l))
+let rec append (l1 : list) (l2 : list) : list =
+  match l1 with
+  | Nil -> l2
+  | Cons ((h : int), (t : list)) -> Cons (h, append t l2)
