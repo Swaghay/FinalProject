@@ -1,9 +1,11 @@
 type expression =   
   | Name of string 
   | Application of (string * expression list) 
+  | Match of (expression * string * body)
 
 type body =
   | Equality of (expression * expression)
+  | MatchBody of (expression * string * body)
 
 type typedName =
   | Arguments of (string * string)
