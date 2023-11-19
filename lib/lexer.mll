@@ -18,6 +18,7 @@ rule token = parse
 | ":" { COLON }
 | "(" { LPAREN }
 | ")" { RPAREN }
+| "->" { ARROW }
 | ['a'-'z' 'A'-'Z' '0'-'9' '_' '\\']+ as id { 
     match id with
     | "let" -> LET

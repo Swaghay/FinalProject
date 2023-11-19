@@ -1,12 +1,16 @@
 type expression =   
   | Name of string 
-  | Application of (string * expression list) 
+  | Application of (string * expression list)
+  | MatchStatement of (pattern * expression) (*match is predefined*)
 
 type body =
   | Equality of (expression * expression)
 
 type typedName =
   | Arguments of (string * string)
+
+type pattern = 
+  | PatternMatch of (string * typedName list)
 
 type varTup =
   | TupSingle of string

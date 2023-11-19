@@ -15,6 +15,7 @@
 %token PIPE
 %token OF
 %token MATCH
+%token ARROW
 %token WITH
 %token STAR
 %token AXIOM 
@@ -57,6 +58,7 @@ expression:
 | LPAREN ; e = expression ; RPAREN {e}
 | f = IDENT ; l = nonempty_list(expression) ; {Application (f, l)}
 | n = IDENT {Name n}
+| l = pattern ; ARROW ; r = expression ; {MatchStatement (l,r)}
 
 
-(* Pattern ((Application ("Cons", (Some way to store (h : int), (t : list)), (Application ("Cons", (Some way to store (h, append t l2))) *)
+(* MatchStatement ((PatternMatch ("Cons", (Arguments ("h", "int"), Arguments ("t", "list")))),(Application ("Cons",  [h, Application ("append", [t,l2])]))) *)
