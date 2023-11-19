@@ -61,6 +61,9 @@ variant:
 
 expression:
 | LPAREN ; e = expression ; RPAREN {e}
+| LPAREN ; e = expression {e}
+| COMMA ; e = expression {e}
+| COMMA ; e = expression ; RPAREN {e}
 | f = IDENT ; l = nonempty_list(expression) ; {Application (f, l)}
 | n = IDENT {Name n}
 | l = pattern ; ARROW ; r = expression ; {MatchStatement (l,r)}
