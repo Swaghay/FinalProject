@@ -1,7 +1,10 @@
 type expression =   
   | Name of string 
   | Application of (string * expression list)
-  | MatchStatement of (pattern * expression) (*match is predefined*)
+  | MatchStatement of (pattern * expression) (*match is predefined*) 
+
+(*TODO: MatchStatement should probably be moved out of expression, Ocaml doesnt like it right now
+   because the order is messed up*)
 
 type body =
   | Equality of (expression * expression)

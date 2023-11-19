@@ -8,6 +8,7 @@ let newline = '\r' | '\n' | "\r\n"
 rule token = parse
 | "(*hint: axiom *)" { AXIOM }
 | "(*hint: induction" { INDUCTION }
+| "(*prove*)" -> { PROVE }
 | "*" { STAR }
 | "(*" { comment 0 lexbuf }
 | newline { Lexing.new_line lexbuf; token lexbuf }
@@ -22,11 +23,10 @@ rule token = parse
 | ['a'-'z' 'A'-'Z' '0'-'9' '_' '\\']+ as id { 
     match id with
     | "let" -> LET
-    | "(*prove*)" -> PROVE
-    | "rec" -> { RECURSION } (*rec is a build-in function in Ocaml*)
-    | "of" -> { OF }
-    | "match" -> { MATCH }
-    | "with" -> { WITH }
+    | "rec" -> RECURSION (*rec is a build-in function in Ocaml*)
+    | "of" -> OF
+    | "match" -> MATCH
+    | "with" -> WITH
     | _ -> IDENT id }
 | eof { EOF }
 | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }

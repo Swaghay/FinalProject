@@ -36,6 +36,7 @@ declaration:
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; INDUCTION ; i = IDENT ; STAR ; RPAREN {ProveInduction (name, args, b, i)}
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body {Let (name, args, b)}
 | LET ; RECURSION ; PROVE ; name = IDENT ;  args = list(typedName) ; COLON ; return = IDENT ; EQUALS ; MATCH ; match_name = IDENT ; WITH (*TODO: add pattern*)
+(*TODO: Ocaml doesnt like the RECURSION token for some reason*)
 | TYPE ; name = IDENT ; EQUALS ; l = list(variant) {Variant (name, l)}
 
 body:
