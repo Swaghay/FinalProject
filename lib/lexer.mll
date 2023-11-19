@@ -8,17 +8,11 @@ let newline = '\r' | '\n' | "\r\n"
 rule token = parse
 | "(*hint: axiom *)" { AXIOM }
 | "(*hint: induction" { INDUCTION }
-| "(*prove*)" { PROVE }
 | "*" { STAR }
 | "(*" { comment 0 lexbuf }
 | newline { Lexing.new_line lexbuf; token lexbuf }
 | [' ' '\t'] { token lexbuf }
-| "let" { LET }
-| "rec" { REC }
 | "|" { PIPE }
-| "of" { OF }
-(* | "of" { OF } *)
-
 | "=" { EQUALS }
 | "type" {TYPE}
 | ":" { COLON }
@@ -28,6 +22,10 @@ rule token = parse
     match id with
     | "let" -> LET
     | "(*prove*)" -> PROVE
+    | "rec" -> { REC }
+    | "of" -> { OF }
+    | "match" -> { MATCH }
+    | "with" -> { WITH }
     | _ -> IDENT id }
 | eof { EOF }
 | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }

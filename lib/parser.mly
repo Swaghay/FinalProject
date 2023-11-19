@@ -13,7 +13,9 @@
 %token COLON
 %token PROVE
 %token PIPE
-%token OF 
+%token OF
+%token MATCH
+%token WITH
 %token STAR
 %token AXIOM 
 %token INDUCTION
@@ -32,6 +34,7 @@ declaration:
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; AXIOM {ProveAxiom (name, args, b)}
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; INDUCTION ; i = IDENT ; STAR ; RPAREN {ProveInduction (name, args, b, i)}
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body {Let (name, args, b)}
+| LET ; PROVE ; name = IDENT ;  args = list(typedName) ; COLON ; return = IDENT ; EQUALS ; MATCH ; match_name = IDENT ; WITH ; b = body {Let (name, args, b)}
 | TYPE ; name = IDENT ; EQUALS ; l = list(variant) {Variant (name, l)}
 
 body:
@@ -54,3 +57,6 @@ expression:
 | LPAREN ; e = expression ; RPAREN {e}
 | f = IDENT ; l = nonempty_list(expression) ; {Application (f, l)}
 | n = IDENT {Name n}
+
+
+(* Pattern ((Application ("Cons", (Some way to store (h : int), (t : list)), (Application ("Cons", (Some way to store (h, append t l2))) *)
