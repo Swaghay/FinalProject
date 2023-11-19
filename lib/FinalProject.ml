@@ -8,13 +8,6 @@ let rec string_of_expression (p : expression) : string =
 -> "(" ^ name ^ " " ^
 (String.concat " " (List.map string_of_expression args)) ^ ")"
   | Name name -> name
-  | Match (expr, matchName, body) ->
-    "match " ^ string_of_expression expr ^ " with " ^ matchName ^ " -> " ^ string_of_body body
-and string_of_body (b: body) : string =
-  match b with
-  | Equality (l, r) -> "(" ^ string_of_expression l ^ " = " ^ string_of_expression r ^ ")"
-  | MatchBody (expr, matchName, body) ->
-      "match " ^ string_of_expression expr ^ " with " ^ matchName ^ " -> " ^ string_of_body body
 
 let string_of_equality (b: body) : string =
   match b with 

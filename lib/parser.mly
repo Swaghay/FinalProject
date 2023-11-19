@@ -25,8 +25,6 @@
 %type <decl> declaration
 %type <typedName> typedName
 %type <expression> expression
-%type <expression> match_expr
-%type <body> match_body
 %%
 
 main:
@@ -59,11 +57,6 @@ expression:
 | LPAREN ; e = expression ; RPAREN {e}
 | f = IDENT ; l = nonempty_list(expression) ; {Application (f, l)}
 | n = IDENT {Name n}
-| match_expr { match_expr }
-
-body:
-  | LPAREN ; l = expression ; EQUALS ; r = expression ; RPAREN { Equality (l, r) }
-  | match_body { match_body }
 
 
 (* Pattern ((Application ("Cons", (Some way to store (h : int), (t : list)), (Application ("Cons", (Some way to store (h, append t l2))) *)

@@ -22,7 +22,7 @@ rule token = parse
     match id with
     | "let" -> LET
     | "(*prove*)" -> PROVE
-    | "rec" -> { RECURSION } (*rec is predefined by ocaml*)
+    | "rec" -> { RECURSION } (*rec is a build-in function in Ocaml*)
     | "of" -> { OF }
     | "match" -> { MATCH }
     | "with" -> { WITH }
