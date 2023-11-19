@@ -8,7 +8,7 @@ let newline = '\r' | '\n' | "\r\n"
 rule token = parse
 | "(*hint: axiom *)" { AXIOM }
 | "(*hint: induction" { INDUCTION }
-| "(*prove*)" -> { PROVE }
+| "(*prove*)" { PROVE }
 | "*" { STAR }
 | "(*" { comment 0 lexbuf }
 | newline { Lexing.new_line lexbuf; token lexbuf }

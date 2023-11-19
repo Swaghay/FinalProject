@@ -13,21 +13,20 @@ rule token = parse
 | "(*" { comment 0 lexbuf }
 | newline { Lexing.new_line lexbuf; token lexbuf }
 | [' ' '\t'] { token lexbuf }
-| "let" { LET }
-| "rec" { REC }
 | "|" { PIPE }
-| "of" { OF }
-(* | "of" { OF } *)
-
 | "=" { EQUALS }
 | "type" {TYPE}
 | ":" { COLON }
 | "(" { LPAREN }
 | ")" { RPAREN }
+| "->" { ARROW }
 | ['a'-'z' 'A'-'Z' '0'-'9' '_' '\\']+ as id { 
     match id with
     | "let" -> LET
-    | "(*prove*)" -> PROVE
+    | "rec" -> RECURSION (*rec is a build-in function in Ocaml*)
+    | "of" -> OF
+    | "match" -> MATCH
+    | "with" -> WITH
     | _ -> IDENT id }
 | eof { EOF }
 | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }

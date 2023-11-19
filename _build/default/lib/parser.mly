@@ -7,13 +7,16 @@
 %token RPAREN
 %token EQUALS
 %token LET
-%token REC
+%token RECURSION
 %token CLOSEHINT
 %token TYPE
 %token COLON
 %token PROVE
 %token PIPE
-%token OF 
+%token OF
+%token MATCH
+%token ARROW
+%token WITH
 %token STAR
 %token AXIOM 
 %token INDUCTION
@@ -32,6 +35,8 @@ declaration:
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; AXIOM {ProveAxiom (name, args, b)}
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body ; INDUCTION ; i = IDENT ; STAR ; RPAREN {ProveInduction (name, args, b, i)}
 | LET ; PROVE ; name = IDENT ;  args = list(typedName) ; EQUALS ; b = body {Let (name, args, b)}
+| LET ; RECURSION ; PROVE ; name = IDENT ;  args = list(typedName) ; COLON ; return = IDENT ; EQUALS ; MATCH ; match_name = IDENT ; WITH (*TODO: add pattern*)
+(*TODO: Ocaml doesnt like the RECURSION token for some reason*)
 | TYPE ; name = IDENT ; EQUALS ; l = list(variant) {Variant (name, l)}
 
 body:
@@ -54,3 +59,7 @@ expression:
 | LPAREN ; e = expression ; RPAREN {e}
 | f = IDENT ; l = nonempty_list(expression) ; {Application (f, l)}
 | n = IDENT {Name n}
+| l = pattern ; ARROW ; r = expression ; {MatchStatement (l,r)}
+
+
+(* MatchStatement ((PatternMatch ("Cons", (Arguments ("h", "int"), Arguments ("t", "list")))),(Application ("Cons",  [h, Application ("append", [t,l2])]))) *)
