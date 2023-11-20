@@ -92,7 +92,7 @@ let usage_msg = Sys.executable_name ^ " [--printback <filename>]"
    Note that "Arg.String" takes a function of type: string -> unit.
    This is where we plug in the 'printfile' function we wrote above. *)
 let speclist =
-  [("--printback", Arg.String printfile, "Print the parsed file back out")]
+  [("--printback", Arg.String printfile, "Print the parsed file back out"), ("--simple", Arg.String printsimple, "Print the simple proof for the file back out")]
 
 let _ = Arg.parse
            speclist
