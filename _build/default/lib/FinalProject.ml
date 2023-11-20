@@ -2,6 +2,11 @@ open Ast
 module Parser = Parser
 module Lexer = Lexer
 
+let parse (s : string) : decl list =
+  let lexbuf = Lexing.from_string s in
+  let ast = Parser.main Lexer.token lexbuf in
+     ast
+
 let rec string_of_typedNameList (l: typedName list) : string =
   match l with
   | [] -> ""
