@@ -6,14 +6,12 @@ sig
   val empty : expression t
   val singleton : string -> expression -> expression t
   val merge : expression t -> expression t -> expression t option
-  val find : stirng -> expression t -> expression t option 
+  val find : string -> expression t -> expression t option 
 end
 
 module Substitution = struct 
 
   module Smap = Map.Make(String)
-
-  type key = string
 
   type t = expression Smap.t
 
