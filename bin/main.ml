@@ -17,6 +17,8 @@ module Parser : (sig exception Error end) = FinalProject.Parser
 (* has a side-effect (namely: it prints) so it belongs here *)
 let print_all = Stdlib.List.map (fun decl -> print_endline (string_of_declaration decl))
 
+let print_simple = Stdlib.List.map (fun decl -> print_endline (string_of_declaration decl))
+
 (* An improved function to parse everything from a 'channel'.
  * It has a side-effect (namely: reads from an input-channel)
  * The filename is passed for error-reporting purposes only
@@ -56,6 +58,21 @@ let printback_file (filename : string) (chan : in_channel)
                     string_of_int (pos.pos_cnum - pos.pos_bol)^
                     ":\n  Syntax error")
 
+
+let printback_simple (filename : string) (chan: in_channel) =
+   let buf = Lexing.from_channel ~with_positions:true chan in
+ (* Lexing.set_filename buf filename; If your ocaml is new enough, this line may help improve error messages. *)
+ match mainParser mainLexer buf with
+ | ast -> let _ = print_simple ast in ()
+ | exception Parser.Error ->
+    let pos = buf.lex_start_p in
+    (* location is formatted such that it becomes clickable in vscode,
+       use ctrl-click or cmd-click *)
+    print_endline ("File \""^filename^"\", line "^
+                    string_of_int pos.pos_lnum^", character "^
+                    string_of_int (pos.pos_cnum - pos.pos_bol)^
+                    ":\n  Syntax error")
+
 (* This function is borrowed largely from Janestreet's core library *)
 (* It is used to ensure that files get closed after they are opened *)
 let protectx f x (finally : _ -> unit) =
@@ -79,7 +96,9 @@ let printfile (filename : string) : unit
             Stdlib.close_in
 
 let printsimple (filename : string) : unit =
-   
+   protectx (printback_file filename)
+            (Stdlib.open_in_gen [ Open_rdonly ] 0o000 filename)
+            Stdlib.close_in
 
 (***********************************************************)
 (* here's the code for dealing with command line arguments *)
