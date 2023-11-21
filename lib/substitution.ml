@@ -23,7 +23,7 @@ module Substitution = struct
 
   let merge map1 map2 = 
     let helper key v1 v2 = 
-    match m1, m2 with
+    match v1, v2 with
     | None, None -> None
     | Some mm1, None -> Some mm1
     | None, Some mm2 -> Some mm2
@@ -32,6 +32,9 @@ module Substitution = struct
 
   let find = Smap.find
 
-  let substitute (vars: string list) (substitution: t) (e: expression) : expression = 
+  let rec substitute (vars: string list) (substitution: t) (e: expression) : expression = 
+    match e with
+    | Name s -> if (List.mem s vars) then (find s substitution) else s
+    | Application (s, lst) -> 
 
 end
