@@ -1,5 +1,5 @@
 open Ast
-
+(* Could use [], MM.singleton, and treat merge like append with more steps *)
 module Substitution :
 sig
   type expression t
