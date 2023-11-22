@@ -68,6 +68,7 @@ expression:
 expression_list:
 | e = expression {[e]}
 | e = expression ; COMMA ; lst = expression_list {e :: lst}
+(*We had to google how to put expressions into a list in a parser*)
 
 
 (* MatchStatement ((PatternMatch ("Cons", (Arguments ("h", "int"), Arguments ("t", "list")))),(Application ("Cons",  [h, Application ("append", [t,l2])]))) *)

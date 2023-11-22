@@ -66,3 +66,30 @@ let string_of_declaration (l) : string =
   | LetMatch (s, args, return, matchvar, patternList) -> "let rec " ^ s ^ " " ^ (string_of_typedNameList args) ^ ": " ^ return ^ " = \n" ^ "match " ^ matchvar ^ " with \n" 
     ^ string_of_patternList patternList
 
+(* let rec returnAxioms (lst: decl list): decl list = 
+  match lst with 
+  | [] -> []
+  | ProveAxiom(name, args, b):: tl -> ProveAxiom(name,args,b)::(returnProves t)
+  | _::t -> (returnProves t)
+  
+let rec returnProves (lst: decl list): decl list =
+  match lst with
+  | [] -> []
+  | Let(name, args, b)::t -> Let(name,args,b)::(returnProves t)
+  | _::t -> (returnProves t)
+
+let rec attemptRewrite (lst: string list) (b: body) (e: expression) : expression option =
+
+let tryEqualities (e: expression) () =
+
+let performSteps (e: expression) = 
+
+
+let produceProof = 
+
+
+let produce_output_simple (lst: decl list): string = 
+
+
+
+ *)
