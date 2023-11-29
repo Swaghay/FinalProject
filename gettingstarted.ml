@@ -19,7 +19,7 @@ let (*prove*) cf_inv_commute (h : int)
 
 (* This should now be provable from the axioms: *)
 let (*prove*) cf_inv_property (h : int)
- = (cf (inv (cf (inv h))) = cf h)
+ = (cf (inv (cf inv h)) = cf h)
 (* no hints! *)
 
 (* Output should read something like this:
